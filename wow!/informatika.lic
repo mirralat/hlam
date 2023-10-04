@@ -1,0 +1,110 @@
+section .data
+x dd 49
+y dd 173
+z = 15
+a dd D1
+b add 0
+c dd 0
+msg db 10
+ 
+section .text
+global_start
+section .bss
+array resb 16
+section .text
+global_start
+_start:
+mov eax, [a];
+mov ebx, 2;
+mov ecx, 0
+lp:
+div ebx
+mov[array+ecx], edx
+sub eax, 0
+jnz lp;
+lp1:
+mov [c], ecx
+mov eax, [array+ecx]
+mov[b], eax;
+mov rax, 1
+mov rdi, 1
+mov rsi, b
+mov rdx, 1
+syscall
+mov ecx, [c]
+dec ecx
+cmp ecx, -1
+jnz lp1
+ 
+wh:
+mov edx, 0
+mov eax, [x]
+mov ebx, 49
+div ebx
+sub edx, 0
+jnz end
+mov eax, [a]
+mov ebx, [x]
+mov ecx, [z]
+xor eax, ebx
+and eax, ecx
+sub eax, 0
+jnz else
+mov eax, [a]
+not ecx
+and eax, ecx
+add eax, [y]
+mov [a], eax
+mov eax, 49
+mox [x], eax
+mov eax, 173
+mov [y], eax
+mov eax, 15
+mov [z], eax
+jmp wh
+else:
+mov eax, [x]
+shl eax, 1
+mov [x], eax
+mov eax, [y]
+shl eax, 1
+mov [y], eax
+mov eax, [z]
+shl eax, 1
+mov [z], eax
+jmp wh
+end:
+mov rax, 1
+mov rdi, 1
+mov rsi, msg
+mov rdx, 1
+syscall
+mov edx, 0
+mov eax, [a]
+mov ebx, 2
+mov ecx, 0
+lp2:
+div ebx
+mov [array+ecx], edx
+inc ecx
+mov edx, 0
+sub eax, 0
+jnz lp2
+dec ecx
+lp3:
+mov [c], ecx
+mov eax, [array+ecx]
+add eax, 48
+mov [b], eax
+mov rax, 1
+mov rdi, 1
+mov rsi, b
+mov rdx, 1
+syscall
+mov ecx, [c]
+dec ecx
+cmp ecx, -1
+jnz lp3
+mov rax, 60
+mov rdi, 0
+syscall

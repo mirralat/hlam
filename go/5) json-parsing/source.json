@@ -1,0 +1,18 @@
+{
+    "friends": [
+    {
+      "id": 0,
+      "name": "Bowen Middleton"
+    },
+    {
+      "id": 1,
+      "name": "Miranda Figueroa"
+    },
+    {
+      "id": 2,
+      "name": "Daniel Tyson"
+    }
+  ],
+  "greeting": "Hello, Bates Clemons! You have 10 unread messages.",
+  "favoriteFruit": "strawberry"
+}
